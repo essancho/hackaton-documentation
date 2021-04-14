@@ -6,7 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import SendTheme from "./components/SendTheme/SendTheme";
 import { API } from "./constants";
-// let tempCount = [];
+let tempCount = [];
 function App() {
     let tempCount = 0;
     let renderCount = useRef(0);
@@ -16,6 +16,7 @@ function App() {
     let [modal, setModal] = useState(false);
     let [addItem, setAddItem] = useState(false);
     let [tempId, setTempId] = useState(null);
+    let [search, setSearch] = useState("");
     function deleteTheme(id) {
         fetch(`${API}/${id}`, {
             method: "DELETE",
@@ -42,8 +43,15 @@ function App() {
         setTempId(id);
         setModal(true);
     }
-
+    function addClick() {
+        setAddItem(true);
+    }
+    function closeAdd() {
+        setAddItem(false);
+    }
+    let totalItems = 0;
     const fetchData = async (url) => {
+        console.log("asd");
         const res = await fetch(url);
         const data = await res.json();
         setItems(data);
@@ -52,6 +60,29 @@ function App() {
     useEffect(() => {
         fetchData(API);
     }, []);
+    totalItems = items.length;
+    useEffect(() => {
+        fetchData(`${API}/?q=${search}&_page=1&_limit=${limit}`);
+    }, [search]);
+
+    let [limit, setLimit] = useState(9);
+    function pagination() {
+        if (limit > totalItems) {
+            return null;
+        } else {
+            let limitP = limit + 6;
+            setLimit(limitP);
+            console.log(limit);
+        }
+    }
+
+    useEffect(() => {
+        fetchData(`${API}/?q=${search}&_page=1&_limit=${limit}`);
+    }, [limit]);
+
+    // function searchItem(e) {
+    //     fetchData(`${API}/?_q${search}`);
+    // }
 
     // function receiveCount() {
     //     tempCount++;
@@ -60,22 +91,30 @@ function App() {
     // }
     return (
         <div className="App">
-            <Navbar />
-            <button clicked={clicked} on>
-                Add Theme
-            </button>
-            <AddTheme
-                setAddItem={setAddItem}
-                setState={setState}
-                fetchData={fetchData}
-            />
+            {modal ? null : <Navbar setSearch={setSearch} />}
+            <div className="div-btn">
+                <button className="main-btn" onClick={addClick} on>
+                    + Add Theme
+                </button>
+                {addItem ? (
+                    <AddTheme
+                        limit={limit}
+                        closeAdd={closeAdd}
+                        setAddItem={setAddItem}
+                        setState={setState}
+                        fetchData={fetchData}
+                    />
+                ) : null}
+            </div>
+            {!modal ? (
+                <SendTheme
+                    fetchData={fetchData}
+                    deleteTheme={deleteTheme}
+                    items={items}
+                    clicked={clicked}
+                />
+            ) : null}
 
-            <SendTheme
-                fetchData={fetchData}
-                deleteTheme={deleteTheme}
-                items={items}
-                clicked={clicked}
-            />
             {modal ? (
                 <InfoModal
                     modalClose={modalClose}
@@ -83,9 +122,23 @@ function App() {
                     fetchData={fetchData}
                     setItems={setItems}
                     items={items}
+                    fetchData={fetchData}
                 />
             ) : null}
-            <Footer />
+            <div className="div-btn">
+                {!modal ? (
+                    <button
+                        onClick={() => {
+                            pagination();
+                        }}
+                        id="load-more"
+                    >
+                        Load More
+                    </button>
+                ) : null}
+            </div>
+
+            {modal ? null : <Footer />}
         </div>
     );
 }

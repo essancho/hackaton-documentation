@@ -22,6 +22,10 @@ const AddTheme = (props) => {
         setImg(e.target.value);
     }
     function addToJson() {
+        if (!title || !desc || !img) {
+            alert("please fill in all the forms");
+            return;
+        }
         // props.setState({});
         // addCount();
         // props.focus();
@@ -38,29 +42,45 @@ const AddTheme = (props) => {
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then(() => props.fetchData(API));
+        }).then(() =>
+            props.fetchData(`${API}?q=&_page=1&_limit=${props.limit}`)
+        );
+        props.closeAdd();
     }
 
     return (
-        <div>
-            <input
-                onChange={handleTitle}
-                type="text"
-                className="input-style inp-theme-title"
-            />
-            <input
-                onChange={handleDesc}
-                type="text"
-                className="input-style inp-theme-desc"
-            />
-            <input
-                onChange={handleImg}
-                type="text"
-                className="input-style inp-theme-img"
-            />
-            <button onClick={addToJson} className="button-style add-theme">
-                Add Theme
-            </button>
+        <div className="theme-modal">
+            <div className="theme-inner-modal">
+                <input
+                    onChange={handleTitle}
+                    placeholder="Theme title"
+                    type="text"
+                    className="input-style inp-theme-title"
+                />
+                <textarea
+                    onChange={handleDesc}
+                    placeholder="theme description"
+                    type="text"
+                    className="input-style inp-theme-desc"
+                ></textarea>
+                <input
+                    onChange={handleImg}
+                    placeholder="Image URL"
+                    type="text"
+                    className="input-style inp-theme-img"
+                />
+                <div>
+                    <button
+                        onClick={addToJson}
+                        className="button-style add-theme"
+                    >
+                        Add Theme
+                    </button>
+                    <button className="load-more" onClick={props.closeAdd}>
+                        Cancel
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

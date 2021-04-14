@@ -2,15 +2,39 @@
   "theme": [
     {
       "title": "HTML",
-      "desc": "",
-      "img": "",
-      "id": 1618392231583
+      "desc": "HTML (HyperText Markup Language — «язык гипертекстовой разметки») — самый базовый строительный блок Веба. Он определяет содержание и структуру веб-контента.",
+      "img": "https://forwww.com/wp-content/uploads/2020/01/locating-web-elements-selenium-1024x576-1.jpg.pagespeed.ce.XxRySezXJf.jpg",
+      "id": 1618427691785
     },
     {
-      "title": "Google",
-      "desc": "Long text here",
-      "img": "https://www.google.kg/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png",
-      "id": 1618392459004
+      "title": "CSS",
+      "desc": "CSS (Cascading Style Sheets) — это код, который вы используете для стилизации вашей веб-страницы. Основы CSS помогут вам понять, что вам нужно для начала работы. Мы ответим на такие вопросы как: Как сделать мой текст черным или красным? Как сделать так, чтобы контент появлялся в определённом месте на экране? Как украсить мою веб-страницу с помощью фоновых изображений и цветов?",
+      "img": "https://mdn.mozillademos.org/files/9461/css-declaration-small.png",
+      "id": 1618427745232
+    },
+    {
+      "title": "Bootstrap",
+      "desc": "Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.",
+      "img": "https://getbootstrap.ru/docs/4.5/assets/brand/bootstrap-social.png",
+      "id": 1618427809051
+    },
+    {
+      "title": "JS Basics",
+      "desc": "JavaScript – это язык программирования, который добавляет интерактивность на ваш веб-сайт (например: игры, отклик при нажатии кнопок или при вводе данных в формы, динамические стили, анимация). Эта статья поможет вам начать работать с этим захватывающим языком и даст вам представление о том, на что он способен.",
+      "img": "https://miro.medium.com/max/1045/1*FrsFDTPmWktht9XEze264w.png",
+      "id": 1618427871091
+    },
+    {
+      "title": "Native JS",
+      "desc": "he original use of native in JS, I believe, refers to objects built and defined in ECMAScript as opposed to the environment. JavaScript, as an ECMAScript language, is not intended to be self-sufficient; it is embedded in a host environment such as a Web browser, Photoshop,",
+      "img": "https://habrastorage.org/files/f8b/286/505/f8b2865058f649e38800a3b3e79c26d0.png",
+      "id": 1618427952603
+    },
+    {
+      "title": "DOM",
+      "desc": "Основой HTML-документа являются теги.\n\nВ соответствии с объектной моделью документа («Document Object Model», коротко DOM), каждый HTML-тег является объектом. Вложенные теги являются «детьми» родительского элемента. Текст, который находится внутри тега, также является объектом.",
+      "img": "https://schoolsw3.com/js/pic_htmltree.gif",
+      "id": 1618428068717
     }
   ]
 }

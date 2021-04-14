@@ -1,4 +1,4 @@
-.theme-modal {
+.editing-modal {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -10,8 +10,7 @@
     justify-content: center;
     align-items: center;
 }
-
-.theme-inner-modal {
+.editing-inner-modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,19 +23,19 @@
     border: solid black;
 }
 
-.theme-inner-modal input {
+.editing-inner-modal input {
     width: 250px;
     margin-bottom: 20px;
 }
 
-.inp-theme-desc {
+.editing-inner-modal textarea {
     height: 70px;
     resize: none;
     margin-bottom: 20px;
     width: 250px;
 }
 
-.theme-inner-modal button {
+.editing-inner-modal button {
     margin: 0 10px;
     background-color: black;
     color: yellow;

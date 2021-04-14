@@ -1,7 +1,7 @@
 import React from "react";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <div>
             <div className="nav">
@@ -15,7 +15,13 @@ const Navbar = () => {
                     <a>Добавить</a>
 
                     <div className="nav-inp">
-                        <input type="text" placeholder="Поиск" />
+                        <input
+                            onChange={(e) => {
+                                props.setSearch(e.target.value);
+                            }}
+                            type="text"
+                            placeholder="Search"
+                        />
                     </div>
                     <a>GitHub</a>
                 </div>

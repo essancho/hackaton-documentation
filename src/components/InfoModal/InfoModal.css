@@ -1,17 +1,37 @@
 .page-modal {
     position: absolute;
+    width: 100%;
+    height: 100%;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100%;
     background-color: white;
-    width: 100%;
-    height: 100%;
     z-index: 50;
 }
 
 .main-modal {
     width: 960px;
     margin: 0 auto;
+    min-height: 600px;
+}
+.main-modal img {
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+.inner-modal button {
+    margin: 20px 0;
+    height: 32px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.p-info-p {
+    margin-bottom: 100px;
+    text-align: start;
+    padding: 0;
 }
